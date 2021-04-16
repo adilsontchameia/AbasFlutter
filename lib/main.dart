@@ -1,3 +1,6 @@
+import 'package:abas_flutter/Primeira.dart';
+import 'package:abas_flutter/Segunda.dart';
+import 'package:abas_flutter/Terceira.dart';
 import 'package:flutter/material.dart';
 
 void main() {
@@ -16,10 +19,15 @@ class _HomeState extends State<Home> with SingleTickerProviderStateMixin {
 
   @override
   void initState() {
-    // TODO: implement initState
     super.initState();
     //Numero de Abas e Animacao controlada pelo mixinProvider
     _tabController = TabController(length: 3, vsync: this);
+  }
+  //Descartar quando nao iremos utilizar mais
+  @override
+  void dispose() {
+    super.dispose();
+    _tabController.dispose();
   }
 
   @override
@@ -50,11 +58,7 @@ class _HomeState extends State<Home> with SingleTickerProviderStateMixin {
       ),
       body: TabBarView(
         controller: _tabController,
-        children: [
-          Text("Pagina Principal"),
-          Text("Pagina Principal"),
-          Text("Pagina Principal"),
-        ],
+        children: [PrimeiraPagina(), Segunda(), Terceira()],
       ),
     );
   }
