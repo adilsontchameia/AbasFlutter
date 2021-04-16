@@ -18,6 +18,7 @@ class _HomeState extends State<Home> with SingleTickerProviderStateMixin {
   void initState() {
     // TODO: implement initState
     super.initState();
+    //Numero de Abas e Animacao controlada pelo mixinProvider
     _tabController = TabController(length: 3, vsync: this);
   }
 
@@ -49,7 +50,11 @@ class _HomeState extends State<Home> with SingleTickerProviderStateMixin {
       ),
       body: TabBarView(
         controller: _tabController,
-        children: Text("Pagina Principal"),
+        children: [
+          Text("Pagina Principal"),
+          Text("Pagina Principal"),
+          Text("Pagina Principal"),
+        ],
       ),
     );
   }
