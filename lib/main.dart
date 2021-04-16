@@ -11,14 +11,25 @@ class Home extends StatefulWidget {
   _HomeState createState() => _HomeState();
 }
 
-class _HomeState extends State<Home> {
+class _HomeState extends State<Home> with SingleTickerProviderStateMixin {
+  TabController _tabController;
+
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+    _tabController = TabController(length: 3, vsync: this);
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
         title: Text("Abas Flutter"),
         //Configurar TabBar
+        //Controller
         bottom: TabBar(
+          controller: _tabController,
           tabs: [
             //Widget
             Tab(
@@ -36,7 +47,10 @@ class _HomeState extends State<Home> {
           ],
         ),
       ),
-      body: Container(),
+      body: TabBarView(
+        controller: _tabController,
+        children: Text("Pagina Principal"),
+      ),
     );
   }
 }
